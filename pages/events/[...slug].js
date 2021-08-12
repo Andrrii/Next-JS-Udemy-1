@@ -3,22 +3,35 @@ import EventList from "../../components/events/events-list";
 import ResultsTitle from "../../components//events/results-title/results-title"
 import Button from "../../components/ui/button";
 import ErrorAlert from "../../components/ui/error-alert"
+import Head from "next/head"
 
 function FilteredEventsPage ({filteredData,filteredEvents,date}) {
 
-
+    const pageHeadData = (
+        <Head>
+            <title>Filtered Events</title>
+            <meta 
+                name = 'description'
+                content = 'Find a lot of great events that allows you to evolve your life'
+            />
+        </Head>
+    )
 
     if(!filteredData) {
         return (
-            <p className="center">
-                Loading...
-            </p>
+            <>
+                {pageHeadData}
+                <p className="center">
+                    Loading...
+                </p>
+            </>
         )
     }
 
     if(!filteredEvents || filteredEvents.length === 0) {
         return (
             <>
+                {pageHeadData}
                 <div className="center">
                     <ErrorAlert>
                         <p>No events found for the chosen filter!</p>
@@ -33,6 +46,7 @@ function FilteredEventsPage ({filteredData,filteredEvents,date}) {
 
     return (
         <>  
+            {pageHeadData}
             <ResultsTitle date = {date} />
             <EventList items = {filteredEvents} />
         </>
