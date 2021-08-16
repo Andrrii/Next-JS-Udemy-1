@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { getComments } from './comments';
 import classes from './new-comment.module.css';
 
 function NewComment(props) {
@@ -33,6 +34,7 @@ function NewComment(props) {
       name: enteredName,
       text: enteredComment,
     });
+    props.getComments()
   }
 
   return (
