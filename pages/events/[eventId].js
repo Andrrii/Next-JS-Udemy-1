@@ -5,6 +5,7 @@ import EventContent from '../../components/event-detail/event-content'
 import Button from '../../components/ui/button'
 import Spinner from '../../components/ui/spinner'
 import Head from "next/head"
+import Comments from '../../components/input/comments'
 
 function EventDetailPage ({event}) {
    
@@ -36,6 +37,7 @@ function EventDetailPage ({event}) {
             <EventContent >
                 <p>{event.description}</p>
             </EventContent>
+            <Comments eventId = {event.id} />
         </>
     )
 }
